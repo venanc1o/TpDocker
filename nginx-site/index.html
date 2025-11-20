@@ -5,17 +5,46 @@
   <title>Site Estático - NGINX Custom</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    body { font-family: Arial, Helvetica, sans-serif; padding: 2rem; background:#f8fafc; color:#111827; }
-    header { margin-bottom: 2rem; }
-    .card { background: white; padding: 1.2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-    a { color: #2563eb; }
+    /* Novo Estilo - Dark Mode */
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      padding: 2rem; 
+      background: #1e1e1e; /* Fundo escuro */
+      color: #f0f0f0; /* Texto claro */
+      line-height: 1.6;
+    }
+    header { 
+      margin-bottom: 2rem; 
+      border-bottom: 2px solid #333;
+      padding-bottom: 1rem;
+    }
+    h1 {
+      color: #4CAF50; /* Verde vibrante */
+    }
+    .card { 
+      background: #2d2d2d; /* Fundo do card mais escuro */
+      padding: 1.5rem; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Sombra mais profunda */
+    }
+    a { 
+      color: #90CAF9; /* Azul claro para links */
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #BBDEFB;
+      text-decoration: underline;
+    }
+    b {
+      color: #FFC107; /* Amarelo para destaque */
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Site Estático (NGINX)</h1>
+    <h1>Site Estático</h1>
     <p>Esta página está sendo servida por um container <b>NGINX</b></p>
-    <p>Feito por: Murilo e José</p>
   </header>
 
   <section class="card">
