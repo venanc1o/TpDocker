@@ -1,105 +1,68 @@
-# 📦 Docker Testando Funcionalidades
-### Node.js + NGINX (Custom Images) usando Docker Compose
+🐳 Projeto Docker: Node.js + NGINX com Compose
+🚀 Visão Geral
+Este repositório é um ambiente de estudo e experimentação focado na orquestração de múltiplos serviços usando Docker Compose. O objetivo é demonstrar conceitos fundamentais do Docker, como a criação de imagens customizadas e a comunicação entre containers isolados.
 
-Este repositório foi criado para **testes, estudos e experimentação** com Docker, Docker Desktop e Docker Compose.  
-Aqui são demonstrados conceitos essenciais como:
+O ambiente final é composto por dois serviços principais:
 
-- Criação de **imagens customizadas** (Node e NGINX)  
-- Build e execução com **docker compose**  
-- Comunicação entre múltiplos containers  
-- Estruturação de ambiente isolado  
-- Inspeção de logs, exec, ps, volumes, networks etc.  
+Servidor Web Estático (NGINX): Para servir conteúdo HTML/CSS.
+API Backend (Node.js/Express): Para rodar uma aplicação simples de API.
+🗂 Estrutura do Repositório
+O projeto segue a seguinte organização, com o docker-compose.yml na raiz:
 
-O objetivo principal é mostrar como subir um ambiente completo usando dois containers:
+📁 docker-testandoFuncionalidades/ ├─ docker-compose.yml ├─ 📁 nginx-site/ # Construção da imagem customizada do NGINX │ ├─ Dockerfile │ └─ index.html └─ 📁 node-app/ # Construção da imagem customizada do Node.js ├─ Dockerfile ├─ package.json └─ app.js
 
-- **NGINX** servindo um site estático  
-- **Node.js (Express)** rodando uma API simples
+🌐 Serviços e Acessos
+Serviço	Tecnologia	Porta Interna	Acesso Local (Host)	Função
+Site Estático	NGINX (Custom Image)	80	👉 http://localhost:8080	Serve o index.html.
+Backend API	Node.js (Express)	3000	👉 http://localhost:8081	Roda uma API que exibe dados e o Hostname do container.
+🧪 Conceitos Chave Explorados
+Este projeto permite experimentar:
 
----
+Builds Customizados: Criação de imagens Docker a partir de Dockerfiles específicos para NGINX e Node.js.
+Orquestração com Compose: Gerenciamento de múltiplos serviços interconectados.
+Mapeamento de Portas: Exposição de portas de containers (80/3000) para o host (8080/8081).
+Inspeção: Uso de comandos para logs, status e acesso ao terminal dos containers.
+🐳 Guia Rápido de Execução
+Certifique-se de estar no diretório raiz do projeto (onde está o docker-compose.yml).
 
-## 🗂 Estrutura do Projeto
+1. Iniciar o Ambiente (Build e Run)
+Constrói as imagens customizadas e inicia os dois containers em modo detached (segundo plano).
 
-```
-📁 docker-tp/
-├─ docker-compose.yml
-├─ 📁 nginx-site/
-│ ├─ Dockerfile
-│ └─ index.html
-└─ 📁 node-app/
-├─ Dockerfile
-├─ package.json
-└─ app.js
-```
+Com certeza! Posso reescrever o seu arquivo README.md mantendo toda a informação essencial e os comandos, mas com uma abordagem e formatação ligeiramente diferente, focando em clareza e impacto visual.Aqui está uma sugestão de README.md revisado:Markdown# 🐳 Projeto Docker: Node.js + NGINX com Compose
 
----
+🚀 Visão Geral
+Este repositório é um ambiente de estudo e experimentação focado na orquestração de múltiplos serviços usando Docker Compose. O objetivo é demonstrar conceitos fundamentais do Docker, como a criação de imagens customizadas e a comunicação entre containers isolados.
 
-## 🌐 Serviços do Projeto
+O ambiente final é composto por dois serviços principais:
 
-### **1️⃣ Site Estático — NGINX**
-Servido através de uma imagem customizada baseada em `nginx:alpine`.
+Servidor Web Estático (NGINX): Para servir conteúdo HTML/CSS.
+API Backend (Node.js/Express): Para rodar uma aplicação simples de API.
+🗂 Estrutura do Repositório
+O projeto segue a seguinte organização, com o docker-compose.yml na raiz:
 
-Acessível em:
+📁 docker-testandoFuncionalidades/├─ docker-compose.yml├─ 📁 nginx-site/ # Construção da imagem customizada do NGINX│ ├─ Dockerfile│ └─ index.html└─ 📁 node-app/ # Construção da imagem customizada do Node.js├─ Dockerfile├─ package.json└─ app.js
+🌐 Serviços e Acessos
+Serviço	Tecnologia	Porta Interna	Acesso Local (Host)	Função
+Site Estático	NGINX (Custom Image)	80	👉 http://localhost:8080	Serve o index.html.
+Backend API	Node.js (Express)	3000	👉 http://localhost:8081	Roda uma API que exibe dados e o Hostname do container.
+🧪 Conceitos Chave Explorados
+Este projeto permite experimentar:
 
-👉 **http://localhost:8080**
+Builds Customizados: Criação de imagens Docker a partir de Dockerfiles específicos para NGINX e Node.js.
+Orquestração com Compose: Gerenciamento de múltiplos serviços interconectados.
+Mapeamento de Portas: Exposição de portas de containers (80/3000) para o host (8080/8081).
+Inspeção: Uso de comandos para logs, status e acesso ao terminal dos containers.
+🐳 Guia Rápido de Execução
+Certifique-se de estar no diretório raiz do projeto (onde está o docker-compose.yml).
 
----
+1. Iniciar o Ambiente (Build e Run)
+Constrói as imagens customizadas e inicia os dois containers em modo detached (segundo plano).
 
-### **2️⃣ Backend Simples — Node.js (Express)**
-Roda uma API simples mostrando JSON com:
-
-- Mensagem
-- Hostname do container
-- Data/hora
-
-Acessível em:
-
-👉 **http://localhost:8081**
-
----
-
-## 🐳 Como Rodar o Projeto
-
-### **1. Construir e subir os containers**
-```
 docker compose up --build -d
-```
+2. Verificar o StatusConfirma se os serviços estão ativos (Up).Bashdocker compose ps
+3. Visualizar os LogsÚtil para debugar ou ver a saída do servidor Node.js (substitua [ID DO CONTAINER] pelo nome do serviço, ex: node-app).Bashdocker compose logs -f [NOME DO SERVIÇO]
+4. Parar e LimparDerruba os containers e remove a rede criada pelo Compose.Bashdocker compose down
+💡 Comandos Docker AdicionaisComandoDescriçãodocker psLista apenas containers ativos.docker ps -aLista todos os containers (ativos e parados).docker imagesLista as imagens Docker armazenadas localmente.docker exec -it <nome> shAbre um terminal de shell dentro de um container em execução.
 
-### **2. Ver Status**
-```
-docker compose ps
-````
-
-### **3. Ver logs**
-```
-docker compose logs -f [ID DO CONTAINER]
-````
-
-### **4. Parar os containers**
-```
-docker compose down
-````
-
----
-
-## 🧪 Objetivo do Projeto
-
-Este repositório foi criado com o propósito de:
-
-- ✔ Experimentar builds customizados com Dockerfile
-- ✔ Treinar docker compose com múltiplos serviços
-- ✔ Aprender a inspecionar containers (logs, exec, ps, stats)
-- ✔ Testar isolamento entre containers
-- ✔ Criar um ambiente simples NGINX + Node
-- ✔ Entender portas, mapeamentos e networks
-
----
-
-## 📚 Comandos Úteis no Docker
-- docker ps                # listar containers ativos
-- docker ps -a             # listar todos containers
-- docker logs <container>  # ver logs
-- docker exec -it <name> sh  # entrar no container
-- docker images            # listar imagens locais
-- docker compose up -d     # subir containers
-- docker compose down      # derrubar containers
----
+```bash
+docker compose up --build -d
